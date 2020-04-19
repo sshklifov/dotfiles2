@@ -1,0 +1,26 @@
+From 2d83d203600aee472aaf7c6026b222863d7ef1d7 Mon Sep 17 00:00:00 2001
+From: Stefan Shklifov <s.shklifov@gmail.com>
+Date: Sat, 18 Apr 2020 09:27:23 +0300
+Subject: [PATCH] patched signatureHelp
+
+---
+ src/messages/textDocument_signatureHelp.cc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/messages/textDocument_signatureHelp.cc b/src/messages/textDocument_signatureHelp.cc
+index e5d5c0d..96c0d56 100644
+--- a/src/messages/textDocument_signatureHelp.cc
++++ b/src/messages/textDocument_signatureHelp.cc
+@@ -126,6 +126,9 @@ public:
+         ls_sig.label += ret_type;
+       }
+     }
++    for (SignatureInformation &x : ls_sighelp.signatures) {
++      x.documentation.reset();
++    } // PATCH
+     std::sort(ls_sighelp.signatures.begin(), ls_sighelp.signatures.end(),
+               [](const SignatureInformation &l, const SignatureInformation &r) {
+                 if (l.parameters.size() != r.parameters.size())
+-- 
+2.26.1
+

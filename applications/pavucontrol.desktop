@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=PulseAudio Volume Control
+GenericName=Volume Control
+Comment=Adjust the volume level
+Exec=pavucontrol -t 3
+Icon=multimedia-volume-control
+StartupNotify=true
+Type=Application
+Categories=AudioVideo;Audio;Mixer;GTK;

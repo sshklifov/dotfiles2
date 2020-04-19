@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ssh with st
+GenericName=Terminal emulator
+Comment=ssh with st
+Exec=st -e ssh 'stefan@10.0.0.124'
+Icon=kitty
+Categories=System;TerminalEmulator;

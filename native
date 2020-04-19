@@ -1,0 +1,73 @@
+# arc-gtk-theme
+# kdeconnect 1.4-2
+# lxappearance 0.6.3-2
+# lxinput 0.3.5-2
+# network-manager-applet 1.16.0-1
+# pa-applet 1.0.2-3
+# pavucontrol 1:4.0-1
+# pcmanfm 1.3.1-2
+# pkgfile 21-1
+# playerctl 2.1.1-1
+# polybar 3.4.2-3
+# ttf-font-awesome 5.13.0-1
+# udiskie 2.1.1-1
+# volumeicon 0.5.1-4
+# vlc 3.0.9.2-0
+# xarchiver 0.5.4.14-1
+# xdotool 3.20160805.1-2
+# xfce4-power-manager 1.6.6-1
+# maim
+# kitty /// sshklifov/st
+
+simplescreenrecorder
+gsfonts
+adobe-source-code-pro-fonts
+noto-fonts
+acpi
+acpid
+texlive-most
+autoconf
+autogen
+automake
+binutils
+clang
+cmake
+discord
+dos2unix
+dosfstools
+doxygen
+efibootmgr
+firefox
+gdb
+glfw-doc
+glfw-x11
+glm
+htop
+iptables
+jq
+llvm
+lsof
+make
+markdown_previewer
+neovim
+net-tools
+nodejs
+npm
+p7zip
+pkgconf
+qpdfview
+rapidjson
+redshift
+rofi
+screenfetch
+sed
+strace
+tar
+texlab
+traceroute
+unrar
+unzip
+wget
+xclip
+zip
+zsh

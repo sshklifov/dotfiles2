@@ -1,0 +1,18 @@
+-1.configure pamac aur
+0. install packages
+1. sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+3. curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+4. PlugInstall && CocInstall coc-lists ; coc-explorer coc-texlab ; coc-markdownlint ; coc-json
+5. change ccls cache location <- strike (vimrc xnoremaps and whatnot?)
+
+2. configure firefox
+
+2. ccls
+2. qpdfview config
+2. htop config
+2. mimeapps
+2. script folder (if using i3 eventually)
+
+2. ln -s ~/.config/nvim/init.vim ~/.vimrc
+2. gdb gui pip install
+2. https://lldb.llvm.org/use/map.html

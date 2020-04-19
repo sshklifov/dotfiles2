@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/stef/Downloads/code/src'
+let g:netrw_dirhist_9='/home/stef/Downloads/code'
+let g:netrw_dirhist_8='/home/stef/Downloads/bezier/src/Main'
+let g:netrw_dirhist_7='/home/stef/Downloads/bezier/src'
+let g:netrw_dirhist_6='/'
+let g:netrw_dirhist_5='/home/stef/Downloads/bezier/src/Main'
+let g:netrw_dirhist_4='/home/stef/Downloads/curve2/src/Renderer'
+let g:netrw_dirhist_3='/usr/include/glm/gtx'
+let g:netrw_dirhist_2='/usr/include/glm'
+let g:netrw_dirhist_1='/usr/include/glm/ext'
