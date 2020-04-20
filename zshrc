@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/stefan/.oh-my-zsh"
+export ZSH="/home/stef/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,7 +68,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(history-substring-search vi-mode git)
+plugins=(history-substring-search git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="bg=magenta,fg=black"
@@ -103,7 +103,6 @@ ZSH_COMPDUMP=/home/stef/.cache/zcompdump
 alias vim="nvim"
 alias update_oh_my_zsh="upgrade_oh_my_zsh"
 alias xclip="xclip -selection clipboard"
-alias xdg-open="xdg-open 2>/dev/null"
 
 function ex ()
 {

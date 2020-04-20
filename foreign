@@ -1,7 +1,6 @@
-bear 2.4.3-1
-nomachine 6.9.2-1
-notify-send.sh 1.1-1
-powerline-fonts-git r202.e80e3eb-1
-spotify 1:1.1.10.546-4
-# tllocalmgr-git v0.7.r3.gbbd8488-4
-xkb-switch 1.5.0-5
+bear
+nomachine
+powerline-fonts-git
+spotify
+xkb-switch
+terminus-font-ttf

@@ -1,3 +1,4 @@
+" vim: set sw=2 ts=2 sts=2 foldmethod=marker:
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
@@ -5,10 +6,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-endwise'
 
-Plug 'arcticicestudio/nord-vim'
-" Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
-
 
 Plug 'webdevel/tabulous'
 Plug 'vim-airline/vim-airline'
@@ -19,47 +17,10 @@ Plug 'sshklifov/auclo'
 
 call plug#end()
 
-" colorscheme
-colorscheme onedark
-set background=dark
-set termguicolors
-
-" Tabulous
-let tabulousLabelLeftStr = ' ['
-let tabulousLabelRightStr = '] '
-let tabulousLabelNumberStr = ':'
-let tabulousLabelNameDefault = 'Empty'
-let tabulousCloseStr = ''
-
-" vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline_symbols = {'space': ' ', 'paste': 'PASTE', 'maxlinenr': ' |',
-      \ 'dirty': '⚡', 'crypt': '🔒', 'linenr': '<C-G>', 'readonly': '',
-      \ 'spell': 'SPELL', 'modified': '+', 'notexists': 'Ɇ', 'keymap': 'Keymap:',
-      \ 'ellipsis': '...', 'branch': '', 'whitespace': ''}
-
-" auclo
+""""""""""""""""""""""""""""Everything else""""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Bracket completion whitelist
 let g:auclo_whitelist = ['cpp', 'c']
-
-" leader general maps
-nnoremap <silent> <leader><leader>q :CocCommand session.save nvim<CR>:qa<CR>
-nnoremap <silent> <leader>so :CocCommand session.load nvim<CR>
-nnoremap <silent> <leader>cd :lcd %:p:h<CR>
-nnoremap <silent> <leader>term :call jobstart("kitty -d " . getcwd())<CR>
-nnoremap <silent> <leader>fterm :call
-      \ jobstart("kitty --name floating_term -d " . getcwd())<CR>
-nnoremap <silent> <leader>unix :set ff=unix<CR>
-nnoremap <silent> <leader>ev :tab drop $MYVIMRC<CR>
-
-" copy-pasting
-nnoremap <leader>y "+y
-nnoremap <leader>Y "+Y
-xnoremap <leader>y "+y
-xnoremap <leader>Y "+Y
-nnoremap <silent> <leader>p :set paste <Bar> exe 'silent! normal! "+p' <Bar> set nopaste<CR>
-nnoremap <silent> <leader>P :set paste <Bar> exe 'silent! normal! "+P' <Bar> set nopaste<CR>
-xnoremap <silent> <leader>p :<C-W>set paste <Bar> exe 'silent! normal! "gv+p' <Bar> set nopaste<CR>
-xnoremap <silent> <leader>P :<C-W>set paste <Bar> exe 'silent! normal! "gv+P' <Bar> set nopaste<CR>
 
 " Indentation settings
 set expandtab
@@ -85,7 +46,38 @@ command! Q q
 command! W w
 command! Qa qa
 
-" Command completion
+" Annoying quirks
+set sessionoptions-=blank
+set shortmess+=I
+au FileType * setlocal fo-=cro
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+nnoremap <C-w>t <C-w>T
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
+
+"""""""""""""""""""""""""""""""Appearance""""""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme onedark
+set background=dark
+set termguicolors
+
+" Tabulous
+let tabulousLabelLeftStr = ' ['
+let tabulousLabelRightStr = '] '
+let tabulousLabelNumberStr = ':'
+let tabulousLabelNameDefault = 'Empty'
+let tabulousCloseStr = ''
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_symbols = {'space': ' ', 'paste': 'PASTE', 'maxlinenr': ' |',
+      \ 'dirty': '⚡', 'crypt': '🔒', 'linenr': '<C-G>', 'readonly': '',
+      \ 'spell': 'SPELL', 'modified': '+', 'notexists': 'Ɇ', 'keymap': 'Keymap:',
+      \ 'ellipsis': '...', 'branch': '', 'whitespace': ''}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
+
+"""""""""""""""""""""""""""Command completion""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildchar=9
 set wildcharm=9
 set wildignore=*.o,*.out
@@ -94,14 +86,18 @@ set wildmode=full
 cnoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
 cnoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
 cnoremap <expr> <Right> pumvisible() ? "\<Down>" : "\<Right>"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
-" latex
+"""""""""""""""""""""""""""""""""Latex"""""""""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set title
 autocmd FileType tex nnoremap <silent> <buffer>
       \<leader>goto :CocCommand latex.ForwardSearch<CR>
 autocmd BufWinLeave *.tex silent !pkill qpdfview
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
-" Bulgarian langmap
+"""""""""""""""""""""""""""Bulgarian langmap"""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:XkbSwitchLib = "/usr/lib/libxkbswitch.so"
 let s:ins_layout=''
 
@@ -135,17 +131,35 @@ function! CustomXkbStatus()
   endif
 endfunction
 call airline#parts#define_function('xkblayout', 'CustomXkbStatus')
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
-" Annoying quirks
-set sessionoptions-=blank
-set shortmess+=I
-au FileType * setlocal fo-=cro
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
+""""""""""""""""""""""""""""""""IDE maps"""""""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader><leader>q :CocCommand session.save nvim<CR>:qa<CR>
+nnoremap <silent> <leader>so :CocCommand session.load nvim<CR>
+nnoremap <silent> <leader>cd :lcd %:p:h<CR>
+nnoremap <silent> <leader>t :call
+      \ jobstart("xfce4-terminal --working-directory=" . getcwd())<CR>
+nnoremap <silent> <leader>unix :set ff=unix<CR>
+nnoremap <silent> <leader>ev :tab drop $MYVIMRC<CR>
 
-""""""""""""""""""""""""""""""""""""COC.NVIM"""""""""""""""""""""""""""""""""""
+" copy-pasting
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+xnoremap <leader>y "+y
+xnoremap <leader>Y "+Y
+nnoremap <silent> <leader>p :set
+      \ paste <Bar> exe 'silent! normal! "+p' <Bar> set nopaste<CR>
+nnoremap <silent> <leader>P :set
+      \ paste <Bar> exe 'silent! normal! "+P' <Bar> set nopaste<CR>
+xnoremap <silent> <leader>p :<C-W>set
+      \ paste <Bar> exe 'silent! normal! gv"+p' <Bar> set nopaste<CR>
+xnoremap <silent> <leader>P :<C-W>set
+      \ paste <Bar> exe 'silent! normal! gv"+P' <Bar> set nopaste<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
+
+"""""""""""""""""""""""""""""""""COC.NVIM""""""""""""""""""""""""""""""""""""{{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " If hidden is not set, TextEdit might fail.
 set hidden
 " Some servers have issues with backup files, see #649
@@ -202,19 +216,7 @@ nmap <silent> <leader>dig :CocList diagnostics<CR>
 nmap <leader>qf <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
 
-" Show documentation in preview window
-nnoremap <silent> <leader>doc :call <SID>show_documentation()<CR>
-nnoremap <silent> <leader>man K
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'tab h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Lists
+" Lists (coc-lists_
 nnoremap <silent> <leader>sym :<C-u>CocList outline<CR>
 nnoremap <silent> <leader>gsym :<C-u>CocList -I symbols<CR>
 nnoremap <silent> <leader>buf :<C-u>CocList --normal buffers<CR>
@@ -226,7 +228,7 @@ nnoremap <silent> <leader>mark :<C-u>CocList marks<CR>
 autocmd FileType cpp nnoremap <silent> <buffer>
       \<leader>goto :<C-u>CocList -I -A lines<CR>
 
-" Explorer
+" Explorer (coc-explorer)
 nnoremap <silent> <leader>tre :CocCommand explorer<CR>
 
 " Add status line support, for integration with other plugin
@@ -239,18 +241,24 @@ autocmd FileType cpp setl formatexpr=CocAction('formatSelected')
 " fix comments for json
 autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd FileType json setlocal commentstring=//\ %s
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
-" ccls specific
+""""""""""""""""""""""""""""""""""CCLS"""""""""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd CursorHoldI * silent call CocActionAsync('showSignatureHelp')
 autocmd CursorHold  * silent call CocActionAsync('highlight')
 
-nn <silent> <leader>calle :call
-      \ CocLocations('ccls', '$ccls/call', {'callee':v:true})<CR>
-nn <silent> <leader>callr :call
-      \ CocLocations('ccls', '$ccls/call')<CR>
+" finds all instances of the specified type
+" when cursor under a variable, uses its type
+nn <silent> <leader>inst :call
+      \ CocLocations('ccls', '$ccls/vars')<CR>
 
-" nn <silent> <leader>inst :call
-"       \ CocLocations('ccls', '$ccls/vars', {'kind':1})<CR>
+" inide a function: list called functions
+nn <silent> <leader>cale :call
+      \ CocLocations('ccls', '$ccls/call', {'callee':v:true})<CR>
+" inside a function: list functions that call it
+nn <silent> <leader>calr :call
+      \ CocLocations('ccls', '$ccls/call')<CR>
 
 nn <silent> <leader>mvar :hide call
       \ CocLocations('ccls', '$ccls/member')<CR>
@@ -259,40 +267,61 @@ nn <silent> <leader>mfun :hide call
 nn <silent> <leader>mtyp :hide call
       \ CocLocations('ccls', '$ccls/member', {'kind':2})<CR>
 
-" Testing
+" find base clases
+nn <silent> <leader>base :call
+      \ CocLocations('ccls','$ccls/inheritance')<CR>
+" find dervied classes
+nn <silent> <leader>der :call
+      \ CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<CR>
+
+" nagive among declarations
+nn <silent><buffer> <C-j> :call
+      \ CocLocations('ccls','$ccls/navigate',{'direction':'D'})<cr>
+nn <silent><buffer> <C-h> :call
+      \ CocLocations('ccls','$ccls/navigate',{'direction':'L'})<cr>
+nn <silent><buffer> <C-l> :call
+      \ CocLocations('ccls','$ccls/navigate',{'direction':'R'})<cr>
+nn <silent><buffer> <C-k> :call
+      \ CocLocations('ccls','$ccls/navigate',{'direction':'U'})<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
+
+""""""""""""""""""""""""""""""GETTING HELP"""""""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Related to the c++ standard (via browser)
 function! s:WebLookup()
   let q = expand('<cword>')
   let url = 'https://en.cppreference.com/mwiki/index.php?search='.q
-  call jobstart(['brave', url])
+  call jobstart(['exo-open', url])
   return q
 endfunction
 
 nnoremap <silent> <leader>web :call <SID>WebLookup()<CR>
 
+" Show documentation in preview window
+" Works with doxygen or vim help
+nnoremap <silent> <leader>doc :call <SID>show_documentation()<CR>
+
+" Consult man pages
+nnoremap <silent> <leader>man K
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'tab h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
+
+""""""""""""""""""""""""""""""""""""""""""""" TODO
 set scrolloff=4
 set noautoread
-
-" TODO learn
 " zr, zm
 " set foldmethod=indent
 " set foldmethod=marker
-
-" set nohidden
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-l> <C-w>l
-
-" nnoremap <C-w>h <C-w>H
-" nnoremap <C-w>j <C-w>J
-" nnoremap <C-w>k <C-w>K
-" nnoremap <C-w>l <C-w>L
-nnoremap <C-w>t <C-w>T
-
 
 " set binary
 " set display=uhex
 
 " TODO CocList maps
-
-" vim: set sw=2 ts=2 sts=2:

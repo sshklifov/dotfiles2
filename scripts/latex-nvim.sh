@@ -3,9 +3,11 @@
 id=$(xdotool search --name "^$(basename $1)")
 nmatches=$(wc -w <<< "$id")
 if [ $nmatches -ne 1 ]; then
-    notify-send.sh -t 2500 \
-        "Failed to find nvim instance.\nReverse forward search result: $2"
-    exit
+    msg=$(echo -e "Failed to find nvim instance\n\
+File: $1\n\
+Line: $2")
+    notify-send --icon qpdfview "$msg"
+    exit 1
 fi
 
 xdotool windowactivate --sync $id

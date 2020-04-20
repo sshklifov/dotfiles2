@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=ssh with st
+Name=ssh to work pc
 GenericName=Terminal emulator
-Comment=ssh with st
-Exec=st -e ssh 'stefan@10.0.0.124'
-Icon=kitty
+Comment=via prefered terminal
+Exec=exo-open --launch TerminalEmulator ssh stefan@10.0.0.124
+Icon=utilities-terminal
 Categories=System;TerminalEmulator;
